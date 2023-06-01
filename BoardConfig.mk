@@ -164,7 +164,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 VENDOR_SECURITY_PATCH := 2023-01-01
 
 # Sepolicy
-include device/qcom/sepolicy_vndr-legacy-um/SEPolicy.mk
+include device/qcom/sepolicy_vndr/SEPolicy.mk
+SELINUX_IGNORE_NEVERALLOWS := true
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
@@ -192,8 +193,7 @@ BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
 
 # VINTF
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    $(DEVICE_PATH)/framework_compatibility_matrix.xml \
-    vendor/awaken/config/device_framework_matrix.xml
+    $(DEVICE_PATH)/framework_compatibility_matrix.xml 
 
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE += $(DEVICE_PATH)/compatibility_matrix.xml
